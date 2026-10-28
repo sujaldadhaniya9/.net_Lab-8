@@ -1,0 +1,36 @@
+@model IEnumerable<InventoryManagement.Models.Product>
+
+@{
+    ViewBag.Title = "Inventory Management";
+}
+
+<h2>Inventory Management</h2>
+
+<p>
+    @Html.ActionLink("Add New Product", "Create")
+</p>
+
+<table border="1" cellpadding="10" cellspacing="0">
+    <tr>
+        <th>Product ID</th>
+        <th>Product Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ProductId</td>
+            <td>@item.ProductName</td>
+            <td>@item.Quantity</td>
+            <td>@item.Price</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ProductId })
+                |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ProductId })
+            </td>
+        </tr>
+    }
+</table>
